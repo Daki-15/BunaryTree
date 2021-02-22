@@ -1,0 +1,23 @@
+void Preorder(Node *root){
+    if(root != NULL){
+        printf("%d ",root->value);
+        Preorder(root->left);
+        Preorder(root->right);
+    }
+}
+
+void Inorder(Node *root){
+    if(root!=NULL){
+        Inorder(root->left);
+        printf("%d ",root->value);
+        Inorder(root->right);
+    }
+}
+
+void Postorder(Node *root){
+    if(root!=NULL){
+        Inorder(root->left);
+        Inorder(root->right);
+        printf("%d ",root->value);
+    }
+}
