@@ -1,0 +1,29 @@
+typedef struct Node{
+    int value;
+    struct Node *left, *right;
+} Node;
+
+Node *new(int value){
+
+    Node *temp=(Node*)malloc(sizeof(Node));
+
+    temp->value=value;
+    temp->left=NULL;
+    temp->right=NULL;
+
+    return temp;
+}
+
+Node *addNode(int value, Node *root){
+
+    if(root == NULL){
+        return new(value);
+    }
+
+    if(value < root->value){
+        root->left=addNode(value, root->left);
+    } else if(value > root->value){
+        root->right=addNode(value,root->right);
+    }
+    return root;
+}
