@@ -1,0 +1,38 @@
+Node *Delete(int valude, Node *root){ // valude => value for delete
+
+    if(root == NULL){
+        return root;
+    }
+
+    if(valude < root->value){ // If value is smaller then the root's
+
+        root->left=Delete(valude, root->left);
+
+    } else if(valude > root->value){ // If value is grater then the root's
+
+            root->right=Delete(valude,root->right);
+
+            }else{ //If value is same as root's value then this is the node to be deleted
+                // Node with only one child or no child
+                if(root->left == NULL){
+
+                    Node *temp=root->right;
+                    free(root);
+
+                    return temp;
+            } else if(root->right == NULL){
+                Node *temp=root->left;
+                free(root);
+                return temp; 
+                }
+            //Node with two children:
+            //Get the inorder successor (smallest in the right subtree)
+            Node *temp = minValude(root->right);
+
+            //Copy the successor
+            root->value=temp->value;
+            //Delete the successor
+            root->right=Delete(temp->value, root->right);
+            }
+    return root;
+}
