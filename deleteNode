@@ -1,3 +1,13 @@
+
+Node *minValude(Node *root){
+    Node *temp=root;
+
+    while(temp!=NULL && temp->left!=NULL){
+        temp=temp->left;
+    }
+    return temp;
+}
+
 Node *Delete(int valude, Node *root){ // valude => value for delete
 
     if(root == NULL){
@@ -18,12 +28,14 @@ Node *Delete(int valude, Node *root){ // valude => value for delete
 
                     Node *temp=root->right;
                     free(root);
-
-                    return temp;
+                    root=temp;
+                    return root;
+                    
             } else if(root->right == NULL){
                 Node *temp=root->left;
                 free(root);
-                return temp; 
+                root=temp;
+                return root; 
                 }
             //Node with two children:
             //Get the inorder successor (smallest in the right subtree)
